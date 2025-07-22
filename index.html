@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>World Brain Day 2025</title>
+
+  <!-- Google Font: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #5b86e5;
+      --secondary: #36d1dc;
+      --bg: #f0f4f8;
+      --text: #333;
+      --light: #fff;
+      --dark: #1e2a38;
+      --accent: #36d1dc;
+    }
+
+    /* reset & box-sizing */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero banner */
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--light);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      animation: fadeIn 1s ease-out;
+    }
+    .hero .subtitle {
+      margin-top: 0.5rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main layout */
+    .layout {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Left panel: today-widget + event-info */
+    .left-panel {
+      flex: 2;
+      background: var(--light);
+      padding: 1.5rem 2rem 1.5rem 1.5rem;
+      overflow-y: auto;
+      position: relative;
+      border-right: 1px solid #ddd;
+    }
+
+    /* Today’s special box */
+    .today-box {
+      background: var(--bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .today-box h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    .today-box p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    /* Event info paragraphs */
+    .event-info p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+      margin-bottom: 1rem;
+    }
+
+    /* Right panel: AI chat */
+    .ai-chat {
+      flex: 1;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+    .ai-chat h2 {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    /* Chat window mount point */
+    #chat-window {
+      position: relative;
+      flex: 1;
+      background: var(--light);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-y: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+    }
+
+    /* Chat input */
+    .chat-input {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .chat-input input:focus {
+      box-shadow: 0 0 0 3px var(--accent);
+      border-color: var(--accent);
+    }
+    .chat-input button {
+      width: 48px;
+      background: var(--accent);
+      border: none;
+      border-radius: 4px;
+      color: var(--light);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background .2s, box-shadow .2s;
+    }
+    .chat-input button:hover {
+      background: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Custom scrollbar */
+    .left-panel::-webkit-scrollbar,
+    #chat-window::-webkit-scrollbar {
+      width: 8px;
+    }
+    .left-panel::-webkit-scrollbar-thumb,
+    #chat-window::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Hide default Metis overlay */
+    #metis-widget-container {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>World Brain Day 2025</h1>
+    <p class="subtitle">Brain Health for All Ages • July 22</p>
+  </header>
+
+  <main class="layout">
+    <!-- Left: dynamic today + static event info -->
+    <section class="left-panel">
+      <div class="today-box">
+        <h2 id="day-title">Loading…</h2>
+        <p id="day-desc">Please wait</p>
+      </div>
+
+      <div class="event-info">
+        <p>World Brain Day is observed every year on July 22nd to raise global awareness about the importance of brain health.</p>
+        <p>The initiative was launched by the World Federation of Neurology in 2014 to commemorate its founding in 1957.</p>
+        <p>The primary goal is to highlight neurological disorders as a major public health challenge worldwide.</p>
+        <p>Each year, the campaign adopts a specific theme; in 2025 it’s “Brain Health for All Ages.”</p>
+        <p>This theme emphasizes protection and promotion of healthy brains from infancy through old age.</p>
+        <p>World Brain Day unites healthcare professionals, patients, caregivers, and policy-makers.</p>
+        <p>Events include webinars, workshops, community screenings, and social-media campaigns under #WorldBrainDay.</p>
+        <p>Preventive measures such as balanced nutrition, regular exercise, quality sleep and mental workouts are promoted.</p>
+        <p>Early detection of stroke, dementia, epilepsy, Parkinson’s and other conditions can save lives.</p>
+        <p>Collaborators such as WHO and UN ECOSOC support the campaign under the IGAP framework.</p>
+        <p>The 2025 effort focuses on improving neurological care access in low- and middle-income countries.</p>
+        <p>Millions globally suffer from brain disorders—many lack timely diagnosis and treatment.</p>
+        <p>On this day, advocacy groups distribute toolkits, posters and online resources to raise awareness.</p>
+        <p>Local chapters of the WFN host fundraisers, screenings, and educational walks.</p>
+        <p>Researchers share breakthroughs in neuroscience to foster global collaboration.</p>
+        <p>The campaign calls on governments to allocate more funding and policy support for brain research.</p>
+        <p>Healthy lifestyle choices are shown to reduce the risk of neurological disease.</p>
+        <p>School programs teach children about brain anatomy, function, and care.</p>
+        <p>Workplace seminars emphasize stress management and cognitive health.</p>
+        <p>July 22nd reminds us that brain health underpins every aspect of well-being.</p>
+      </div>
+    </section>
+
+    <!-- Right: AI chat -->
+    <aside class="ai-chat">
+      <h2>Ask the AI Brain</h2>
+      <div id="chat-window"></div>
+      <form class="chat-input">
+        <input type="text" placeholder="Type your question…"/>
+        <button type="submit">➤</button>
+      </form>
+    </aside>
+  </main>
+
+  <script>
+    // Map of special dates
+    const specials = {
+      "01-01": {
+        title: "Happy New Year!",
+        desc: "Here’s to fresh starts and new discoveries."
+      },
+      "07-22": {
+        title: "Happy World Brain Day",
+        desc: "Celebrating the power of our minds and brain health for all ages!"
+      }
+    };
+
+    // update Today box
+    function updateDayWidget() {
+      const now = new Date();
+      const key = String(now.getMonth()+1).padStart(2,'0')
+                + '-' + String(now.getDate()).padStart(2,'0');
+      const info = specials[key] || {
+        title: "Welcome!",
+        desc: "Ask anything—your AI brain is listening."
+      };
+      document.getElementById('day-title').textContent = info.title;
+      document.getElementById('day-desc').textContent  = info.desc;
+    }
+
+    // init + midnight scheduler
+    updateDayWidget();
+    (function scheduleMidnight() {
+      const now = new Date(),
+            next = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1),
+            ms = next - now + 1000;
+      setTimeout(()=>{
+        updateDayWidget();
+        scheduleMidnight();
+      }, ms);
+    })();
+  </script>
+
+  <!-- MetisAI chat widget -->
+  <script
+    src="https://console.metisai.ir/chat-widget.js"
+    data-bot-id="d223b970-259d-4a7f-afa8-cd0317c26719"
+    data-container="#chat-window"
+    default-open="false"
+    async>
+  </script>
+</body>
+</html>
